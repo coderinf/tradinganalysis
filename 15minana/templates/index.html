@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signals</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+      }
+      .signal-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .signal {
+        width: 150px;
+        height: 150px;
+        margin: 10px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .long {
+        color: green;
+      }
+      .short {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Signals</h1>
+    <div class="signal-container">
+      {% for signal in msgs.split('\n') %}
+        <div class="signal {% if 'LONG' in signal %}long{% else %}short{% endif %}">
+          {{ signal }}
+        </div>
+      {% endfor %}
+    </div>
+    <script>
+      setInterval(function() {
+        location.reload();
+      }, 60000); // reload every 60 seconds
+    </script>
+  </body>
+</html>
